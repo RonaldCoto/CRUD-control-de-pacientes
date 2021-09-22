@@ -1,0 +1,225 @@
+<div class="container py-5">
+  <div class="col-md-6 mx-auto">
+    <div class="card shadow p-3 mb-5 bg-white rounded">
+      <div class="card-header">
+        <h4>Agregar paciente</h4>
+      </div>
+      <div class="card-body">
+        <form #pacienteteForm="ngForm" (ngSubmit)="agregar(pacienteteForm)">
+          <div class="form-group">
+            <label for="nombre">Nombre</label>
+            <input
+              type="text"
+              class="form-control"
+              id="nombre"
+              name="Nombre"
+              autocomplete="off"
+              placeholder="Ej. Gabriela Marisol García Mendez"
+              #Nombre="ngModel"
+              [(ngModel)]="paciente.Nombre"
+              [ngClass]="{ 'is-invalid': Nombre.errors && Nombre.touched }"
+              required
+            />
+            <div [hidden]="!Nombre.errors?.required" class="invalid-feedback">
+              Nombre requerido
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="dui">DUI</label>
+              <input
+                type="text"
+                class="form-control"
+                id="dui"
+                name="DUI"
+                autocomplete="off"
+                placeholder="Ej. 21530124-9"
+                #DUI="ngModel"
+                [(ngModel)]="paciente.DUI"
+                [ngClass]="{ 'is-invalid': DUI.errors && DUI.touched }"
+                required
+                pattern="[0-9]{8}[ -][0-9]{1}"
+              />
+              <div [hidden]="!DUI.errors?.required" class="invalid-feedback">
+                Dui requerido
+              </div>
+              <div [hidden]="!DUI.errors?.pattern" class="invalid-feedback">
+                Formáto de Dui no es válido
+              </div>
+            </div>
+            <div class="form-group col-md-6">
+              <label for="telefono">Teléfono</label>
+              <input
+                type="text"
+                class="form-control"
+                id="telefono"
+                name="Telefono"
+                autocomplete="off"
+                placeholder="Ej. 2256-9632"
+                pattern="[0-9]{4}[ -][0-9]{4}"
+                #Telefono="ngModel"
+                [(ngModel)]="paciente.Telefono"
+                [ngClass]="{
+                  'is-invalid': Telefono.errors && Telefono.touched
+                }"
+                required
+              />
+              <div
+                [hidden]="!Telefono.errors?.required"
+                class="invalid-feedback"
+              >
+                Télefono requerido
+              </div>
+              <div
+                [hidden]="!Telefono.errors?.pattern"
+                class="invalid-feedback"
+              >
+                Formáto de télefono no es válido
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-7">
+              <label for="email">Correo electrónico</label>
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                name="Correo"
+                autocomplete="off"
+                placeholder="Ej. correo21@gmail.com"
+                #Correo="ngModel"
+                [(ngModel)]="paciente.Correo"
+                [ngClass]="{ 'is-invalid': Correo.errors && Correo.touched }"
+                pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+                required
+              />
+              <div [hidden]="!Correo.errors?.required" class="invalid-feedback">
+                Email requerido
+              </div>
+              <div [hidden]="!Correo.errors?.pattern" class="invalid-feedback">
+                Email no es válido
+              </div>
+            </div>
+            <div class="form-group col-md-5">
+              <label for="nacimiento">Fecha de nacimiento</label>
+              <input
+                type="date"
+                class="form-control"
+                id="nacimiento"
+                #FechaNacimiento="ngModel"
+                name="FechaNacimiento"
+                [(ngModel)]="paciente.FechaNacimiento"
+                [ngClass]="{
+                  'is-invalid':
+                    FechaNacimiento.errors && FechaNacimiento.touched
+                }"
+                required
+              />
+              <div
+                [hidden]="!FechaNacimiento.errors?.required"
+                class="invalid-feedback"
+              >
+                Fecha requerida
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Sexo</label>
+            <br />
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="Genero"
+                #Genero="ngModel"
+                id="masculino"
+                value="Masculino"
+                [(ngModel)]="paciente.Genero"
+              />
+              <label class="form-check-label" for="masculino">Masculino</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="Genero"
+                #Genero="ngModel"
+                id="femenino"
+                value="Femenino"
+                [(ngModel)]="paciente.Genero"
+              />
+              <label class="form-check-label" for="femenino">Femenino</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="Genero"
+                #Genero="ngModel"
+                id="otro"
+                value="Otro"
+                value="Otro"
+                [(ngModel)]="paciente.Genero"
+              />
+              <label class="form-check-label" for="otro">Otro</label>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-9">
+              <label for="direccion">Dirección</label>
+              <input
+                type="text"
+                name="Direccion"
+                class="form-control"
+                id="direccion"
+                autocomplete="off"
+                placeholder="Ej. Av.25 blovk 34..."
+                #Direccion="ngModel"
+                [(ngModel)]="paciente.Direccion"
+                [ngClass]="{
+                  'is-invalid': Direccion.errors && Direccion.touched
+                }"
+                required
+              />
+              <div
+                [hidden]="!Direccion.errors?.required"
+                class="invalid-feedback"
+              >
+                Dirección requerida
+              </div>
+            </div>
+            <div class="form-group col-md-3">
+              <label for="postal">Código postal</label>
+              <input
+                type="text"
+                class="form-control"
+                id="postal"
+                name="CodigoPostal"
+                autocomplete="off"
+                placeholder="Ej. 01101"
+                #CodigoPostal="ngModel"
+                [(ngModel)]="paciente.CodigoPostal"
+                [ngClass]="{
+                  'is-invalid': CodigoPostal.errors && CodigoPostal.touched
+                }"
+                required
+              />
+              <div
+                [hidden]="!CodigoPostal.errors?.required"
+                class="invalid-feedback"
+              >
+                Código postal requerido
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="from-group d-grid gap-2">
+              <input type="submit" value="Agregar" class="btn btn-primary" />
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

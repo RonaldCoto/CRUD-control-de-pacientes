@@ -1,0 +1,14 @@
+.tab{
+    overflow:scroll;
+    height:100%;
+    width:100%;
+}
+.btedit:hover{
+    background-color: #7370FF !important;
+    color: black !important;
+}
+
+.btdel:hover{
+    background-color: #E05260 !important;
+    color: black !important;
+}

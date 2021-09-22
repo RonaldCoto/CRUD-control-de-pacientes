@@ -1,0 +1,62 @@
+<div class="container">
+  <div class="container my-5">
+    <h4>Listado de pacientes</h4>
+  </div>
+  <div class="container mb-4">
+    <div class="row">
+      <div class="col-md-2">
+        <div class="d-grid gap-2">
+          <a routerLink="/agregar" class="btn btn-outline-primary"
+            ><i class="fas fa-plus mr-2"></i>Agregar</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container mt-2 mb-4 tab">
+    <table class="table table-striped" style="background-color: #d0cfff">
+      <thead class="text-white" style="background-color: #272559">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">DUI</th>
+          <th scope="col">Teléfono</th>
+          <th scope="col">Correo</th>
+          <th scope="col">F.nacimiento</th>
+          <th scope="col">Género</th>
+          <th scope="col">Dirección</th>
+
+          <th scope="col">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let paciente of pacientes; let i = index">
+          <th scope="row">{{ i + 1 }}</th>
+          <td>{{ paciente.Nombre }}</td>
+          <td>{{ paciente.DUI }}</td>
+          <td>{{ paciente.Telefono }}</td>
+          <td>{{ paciente.Correo }}</td>
+          <td>{{ paciente.FechaNacimiento | date: "dd/MM/yyyy" }}</td>
+          <td>{{ paciente.Genero }}</td>
+          <td>{{ paciente.Direccion }}</td>
+
+          <td>
+            <a
+              class="btn btedit text-white mr-1"
+              style="background-color: #2d2862"
+              routerLink="/paciente/editar/{{ paciente.id }}"
+              ><i class="fas fa-edit"></i
+            ></a>
+            <a
+              class="btn btdel text-white"
+              style="background-color: #BF2231"
+              (click)="eliminar(paciente.id)"
+              ><i class="fas fa-trash-alt"></i
+            ></a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <br /><br />
+</div>

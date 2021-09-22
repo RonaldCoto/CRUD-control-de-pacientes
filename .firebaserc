@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "authangufire": {
+      "hosting": {
+        "control-pacientes": [
+          "authangufire"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "authangufire"
+  }
+}
